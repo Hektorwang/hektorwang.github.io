@@ -1,16 +1,13 @@
 ---
-layout: post
-title: "Notes on SSH"
+title: "ssh"
 date: 2024-07-18 00:00:00 +0000
-categories: Linux basic infrastructure
+categories: Linux
 author: Niko
 ---
 
-## Notes on SSH
+## Opening Software on a Remote Server via X11
 
-### Opening Software on a Remote Server via X11
-
-#### # On the server (X11-SERVER)
+### On the server (X11-SERVER)
 
 ```bash
 # Install necessary packages
@@ -25,7 +22,7 @@ X11DisplayOffset 10' >> /etc/ssh/sshd_config"
 sudo systemctl restart sshd
 ```
 
-#### On the client (X11-CLIENT)
+### On the client (X11-CLIENT)
 
 ```bash
 ssh -XYT "${X11-SERVER-IP}" xclock
