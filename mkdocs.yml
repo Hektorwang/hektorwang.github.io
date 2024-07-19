@@ -1,4 +1,5 @@
-site_name: !ENV [SITE_NAME, "My Learning Notes"]
+# site_name: !ENV [SITE_NAME, "My Learning Notes"]
+site_name: "My Learning Notes"
 site_url: https://hektorwang@github.io
 site_description: Niko's Learning Notes
 site_author: You-Know-Who
@@ -24,15 +25,15 @@ nav:
   - Docker:
       - docker: Docker/docker.md
       - compose: Docker/compose.md
-  - K8S:
-      - blank: K8S/blank.md
+  - K8s:
+      - blank: K8s/blank.md
   - Blog:
-    - blog/index.md
+      - blog/index.md
   # - License: https://creativecommons.org/licenses/by-sa/4.0/
 strict: true
 markdown_extensions:
-  - smarty
-  - nl2br
+  # - smarty
+  # - nl2br
   - md_in_html
   - toc:
       permalink: true
