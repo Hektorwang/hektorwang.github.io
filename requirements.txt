@@ -1,5 +1,0 @@
-ghp-import
-jieba
-markdown
-mkdocs-material
-mkdocs[i18n]
