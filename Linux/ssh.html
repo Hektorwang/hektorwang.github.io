@@ -9,7 +9,7 @@
         <meta name="description" content="Niko's Learning Notes">
       
       
-        <meta name="author" content="Niko">
+        <meta name="author" content="You-Know-Who">
       
       
         <link rel="canonical" href="https://hektorwang@github.io/Linux/ssh.html">
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#opening-software-on-a-remote-server-via-x11" class="md-skip">
+        <a href="#ssh" class="md-skip">
           Skip to content
         </a>
       
@@ -285,6 +285,8 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
@@ -312,6 +314,8 @@
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
+  
+    
   
   
     <label class="md-nav__title" for="__toc">
@@ -343,6 +347,48 @@
   <a href="#on-the-client-x11-client" class="md-nav__link">
     <span class="md-ellipsis">
       On the client (X11-CLIENT)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compiling-openssh-with-musl-on-almalinux-94" class="md-nav__link">
+    <span class="md-ellipsis">
+      Compiling OpenSSH with musl on AlmaLinux 9.4
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Compiling OpenSSH with musl on AlmaLinux 9.4">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#note" class="md-nav__link">
+    <span class="md-ellipsis">
+      Note
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Steps
     </span>
   </a>
   
@@ -829,6 +875,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -869,6 +917,48 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#compiling-openssh-with-musl-on-almalinux-94" class="md-nav__link">
+    <span class="md-ellipsis">
+      Compiling OpenSSH with musl on AlmaLinux 9.4
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Compiling OpenSSH with musl on AlmaLinux 9.4">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#note" class="md-nav__link">
+    <span class="md-ellipsis">
+      Note
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Steps
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -887,8 +977,7 @@
   
 
 
-  <h1>ssh</h1>
-
+<h1 id="ssh">ssh<a class="headerlink" href="#ssh" title="Permanent link">&para;</a></h1>
 <h2 id="opening-software-on-a-remote-server-via-x11">Opening Software on a Remote Server via X11<a class="headerlink" href="#opening-software-on-a-remote-server-via-x11" title="Permanent link">&para;</a></h2>
 <h3 id="on-the-server-x11-server">On the server (X11-SERVER)<a class="headerlink" href="#on-the-server-x11-server" title="Permanent link">&para;</a></h3>
 <pre><code class="language-bash"># Install necessary packages
@@ -905,15 +994,40 @@ sudo systemctl restart sshd
 <h3 id="on-the-client-x11-client">On the client (X11-CLIENT)<a class="headerlink" href="#on-the-client-x11-client" title="Permanent link">&para;</a></h3>
 <pre><code class="language-bash">ssh -XYT &quot;${X11-SERVER-IP}&quot; xclock
 </code></pre>
+<h2 id="compiling-openssh-with-musl-on-almalinux-94">Compiling OpenSSH with musl on AlmaLinux 9.4<a class="headerlink" href="#compiling-openssh-with-musl-on-almalinux-94" title="Permanent link">&para;</a></h2>
+<p>Updating OpenSSH on a Linux host is a common task. According to <a href="https://nvd.nist.gov/vuln/detail/CVE-2024-6387">CVE-2024-6387</a>, this security risk affects many openssh-server compiled with glibc. In this article, we'll demonstrate how to compile OpenSSH with musl on AlmaLinux 9.4.</p>
+<h3 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Compile OpenSSH requires an SSL library like OpenSSL. We'll use <a href="https://github.com/openssl/openssl/releases/download/openssl-3.0.14/openssl-3.0.14.tar.gz.asc">openssl-3.0.14</a></li>
+<li>We'll also need the musl libc library: <a href="https://musl.libc.org/releases/musl-1.2.5.tar.gz">musl-1.2.5</a></li>
+<li>Finally, <a href="https://cloudflare.cdn.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-9.8p1.tar.gz">openssh-9.8p1</a></li>
+</ul>
+<h3 id="note">Note<a class="headerlink" href="#note" title="Permanent link">&para;</a></h3>
+<p>Since the official OpenSSH doesn't support RHEL's systemd notify function, the systemd-devel package will be required for compiling OpenSSH on AlmaLinux.</p>
+<h3 id="steps">Steps<a class="headerlink" href="#steps" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Install systemd-devel and other requirements</li>
+</ol>
+<p>```bash
+   dnf install -y systemd-devel pam pam-devel zlib zlib-devel perl-IPC-Cmd perl make gcc patch</p>
+<p>```</p>
+<ol>
+<li>
+<p>Install musl</p>
+</li>
+<li>
+<p>Compile and install openssl</p>
+</li>
+<li>
+<p>Compile and install openssh</p>
+</li>
+</ol>
 
 
 
 
 
 
-
-  
-  
 
 
 
