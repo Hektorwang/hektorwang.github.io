@@ -1,5 +1,5 @@
 # My Learning Notes
 
-Wellcome to my learning notes.
+Welcome to my learning notes.
 
-I'm focusing on Linux, Bash Scripting, Python Scripting, Docker and K8s.
+I'm focusing on Linux, Bash Scripting, Python Scripting, Docker and Kubernetes.
