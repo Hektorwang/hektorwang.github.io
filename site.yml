@@ -9,27 +9,6 @@ repo_url: https://github.com/Hektorwang/hektorwang.github.io
 edit_uri: blob/main/docs/
 remote_branch: gh-pages
 
-nav:
-  - Home: index.md
-  # - About: about.md
-  - Linux:
-      - ssh: Linux/ssh.md
-      - curl: Linux/curl.md
-      - aria2: Linux/aria2.md
-      - ansible: Linux/ansible.md
-  - Bash:
-      - blank: Bash/blank.md
-  - Python:
-      - pandas: Python/pandas.md
-      - requests: Python/requests.md
-  - Docker:
-      - docker: Docker/docker.md
-      - compose: Docker/compose.md
-  - K8s:
-      - blank: K8s/blank.md
-  - Blog:
-      - blog/index.md
-  # - License: https://creativecommons.org/licenses/by-sa/4.0/
 strict: true
 markdown_extensions:
   # - smarty

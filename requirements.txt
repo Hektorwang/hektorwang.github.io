@@ -3,3 +3,4 @@ jieba
 markdown
 mkdocs-material
 mkdocs[i18n]
+types-PyYAML

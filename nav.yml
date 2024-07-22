@@ -1,0 +1,17 @@
+nav:
+- index: index.md
+- blog:
+  - index: blog/index.md
+- Docker:
+  - blank: Docker/blank.md
+- K8s:
+  - blank: K8s/blank.md
+- Linux:
+  - blank: Linux/blank.md
+  - ssh: Linux/ssh.md
+- Python:
+  - blank: Python/blank.md
+  - pandas:
+    - blank: Python/pandas/blank.md
+- Bash:
+  - blank: Bash/blank.md

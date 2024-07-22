@@ -1,13 +1,93 @@
 {
-        "yaml.schemas": {
-          "https://squidfunk.github.io/mkdocs-material/schema.json": "mkdocs.yml"
-        },
-    "yaml.customTags": [
-        "!ENV scalar",
-        "!ENV sequence",
-        "!relative scalar",
-        "tag:yaml.org,2002:python/name:material.extensions.emoji.to_svg",
-        "tag:yaml.org,2002:python/name:material.extensions.emoji.twemoji",
-        "tag:yaml.org,2002:python/name:pymdownx.superfences.fence_code_format"
-    ]
+  "yaml.schemas": {
+    "https://squidfunk.github.io/mkdocs-material/schema.json": "mkdocs.yml"
+  },
+  "yaml.customTags": [
+    "!ENV scalar",
+    "!ENV sequence",
+    "!relative scalar",
+    "tag:yaml.org,2002:python/name:material.extensions.emoji.to_svg",
+    "tag:yaml.org,2002:python/name:material.extensions.emoji.twemoji",
+    "tag:yaml.org,2002:python/name:pymdownx.superfences.fence_code_format"
+  ],
+  "diffEditor.maxFileSize": 10,
+  "editor.copyWithSyntaxHighlighting": true,
+  "editor.cursorWidth": 5,
+  "editor.emptySelectionClipboard": false,
+  "editor.find.loop": true,
+  "editor.find.seedSearchStringFromSelection": "selection",
+  "editor.fontFamily": "'JetBrains Mono Medium', 'monospace', monospace",
+  "editor.fontLigatures": false,
+  "editor.fontSize": 15,
+  "editor.formatOnSave": false,
+  "editor.formatOnSaveMode": "file",
+  // "editor.guides.bracketPairs": "active",
+  // "editor.multiCursorModifier": "ctrlCmd",
+  "editor.guides.bracketPairsHorizontal": "active",
+  "editor.guides.highlightActiveBracketPair": true,
+  "editor.links": false,
+  "editor.mouseWheelZoom": true,
+  "editor.quickSuggestionsDelay": 50,
+  "editor.rulers": [80],
+  "editor.selectionClipboard": false,
+  "editor.unicodeHighlight.ambiguousCharacters": false,
+  "editor.unicodeHighlight.nonBasicASCII": false,
+  "editor.wordBreak": "keepAll",
+  "editor.codeActionsOnSave": {},
+  "editor.wordSeparators": "`~!@#$%^&*()-=+[{]}\\|;:'\",.<>/?",
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "files.autoGuessEncoding": true,
+  "git.enableSmartCommit": true,
+  "git.ignoreLegacyWarning": true,
+  "prettier.bracketSameLine": false,
+  "prettier.singleAttributePerLine": false,
+  "prettier.singleQuote": true,
+  "prettier.jsxSingleQuote": true,
+  "prettier.trailingComma": "es5",
+  "prettier.withNodeModules": false,
+  "redhat.telemetry.enabled": false,
+  "remoteHub.gitProtocol": "http",
+  "scm.countBadge": "focused",
+  "scm.defaultViewMode": "tree",
+  "window.zoomLevel": 1.2,
+  "workbench.startupEditor": "none",
+
+  "eslint.validate": ["javascript", "javascriptreact", "html", "vue"],
+
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[nginx]": {
+    "editor.defaultFormatter": "ahmadalli.vscode-nginx-conf"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[shellscript]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+  "pylint.args": ["--rcfile=${workspaceFolder/pylintrc"],
+  "python.envFile": "${workspaceFolder}/.env",
+  "python.terminal.activateEnvInCurrentTerminal": false,
+  "python.testing.unittestEnabled": true,
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.formatOnSave": true
+  },
+  "autoDocstring.includeName": false,
+  "autoDocstring.startOnNewLine": false,
+  "autoDocstring.includeExtendedSummary": false
 }
