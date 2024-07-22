@@ -2,72 +2,47 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://hektorwang@github.io/index.html</loc>
-         <lastmod>2024-07-21</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://hektorwang@github.io/about.html</loc>
-         <lastmod>2024-07-21</lastmod>
+         <lastmod>2024-07-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://hektorwang@github.io/Bash/blank.html</loc>
-         <lastmod>2024-07-21</lastmod>
+         <lastmod>2024-07-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://hektorwang@github.io/Docker/compose.html</loc>
-         <lastmod>2024-07-21</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://hektorwang@github.io/Docker/docker.html</loc>
-         <lastmod>2024-07-21</lastmod>
+         <loc>https://hektorwang@github.io/Docker/blank.html</loc>
+         <lastmod>2024-07-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://hektorwang@github.io/K8s/blank.html</loc>
-         <lastmod>2024-07-21</lastmod>
+         <lastmod>2024-07-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://hektorwang@github.io/Linux/ansible.html</loc>
-         <lastmod>2024-07-21</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://hektorwang@github.io/Linux/aria2.html</loc>
-         <lastmod>2024-07-21</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://hektorwang@github.io/Linux/curl.html</loc>
-         <lastmod>2024-07-21</lastmod>
+         <loc>https://hektorwang@github.io/Linux/blank.html</loc>
+         <lastmod>2024-07-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://hektorwang@github.io/Linux/ssh.html</loc>
-         <lastmod>2024-07-21</lastmod>
+         <lastmod>2024-07-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://hektorwang@github.io/Python/duckdb.html</loc>
-         <lastmod>2024-07-21</lastmod>
+         <loc>https://hektorwang@github.io/Python/blank.html</loc>
+         <lastmod>2024-07-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://hektorwang@github.io/Python/pandas.html</loc>
-         <lastmod>2024-07-21</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://hektorwang@github.io/Python/requests.html</loc>
-         <lastmod>2024-07-21</lastmod>
+         <loc>https://hektorwang@github.io/Python/pandas/blank.html</loc>
+         <lastmod>2024-07-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://hektorwang@github.io/blog/index.html</loc>
-         <lastmod>2024-07-21</lastmod>
+         <lastmod>2024-07-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
