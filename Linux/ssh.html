@@ -964,8 +964,7 @@ sudo systemctl restart sshd
 </ul>
 <h3 id="steps">Steps<a class="headerlink" href="#steps" title="Permanent link">&para;</a></h3>
 <h4 id="1-install-required-system-packages">1. Install Required System Packages<a class="headerlink" href="#1-install-required-system-packages" title="Permanent link">&para;</a></h4>
-<pre><code class="language-sh">sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/repositories
-apk update &amp;&amp; apk upgrade &amp;&amp; apk add autoconf build-base linux-headers linux-pam-dev zlib-dev openssl-dev zlib-static musl-dev openssl-libs-static
+<pre><code class="language-sh">apk update &amp;&amp; apk upgrade &amp;&amp; apk add autoconf build-base linux-headers linux-pam-dev zlib-dev openssl-dev zlib-static musl-dev openssl-libs-static
 </code></pre>
 <h4 id="2-download-source-code-packages">2. Download Source Code Packages<a class="headerlink" href="#2-download-source-code-packages" title="Permanent link">&para;</a></h4>
 <p>Download the source code packages to the /tmp/src/ directory.</p>
