@@ -1,52 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://hektorwang@github.io/index.html</loc>
+         <loc>https://hektorwang.github.io/index.html</loc>
          <lastmod>2024-08-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://hektorwang@github.io/Bash/blank.html</loc>
+         <loc>https://hektorwang.github.io/Bash/blank.html</loc>
          <lastmod>2024-08-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://hektorwang@github.io/K8s/blank.html</loc>
+         <loc>https://hektorwang.github.io/K8s/blank.html</loc>
          <lastmod>2024-08-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://hektorwang@github.io/Linux/blank.html</loc>
+         <loc>https://hektorwang.github.io/Linux/ssh.html</loc>
          <lastmod>2024-08-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://hektorwang@github.io/Linux/ssh.html</loc>
+         <loc>https://hektorwang.github.io/Python/blank.html</loc>
          <lastmod>2024-08-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://hektorwang@github.io/Python/blank.html</loc>
+         <loc>https://hektorwang.github.io/Python/pandas/blank.html</loc>
          <lastmod>2024-08-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://hektorwang@github.io/Python/pandas/blank.html</loc>
+         <loc>https://hektorwang.github.io/blog/index.html</loc>
          <lastmod>2024-08-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://hektorwang@github.io/blog/index.html</loc>
+         <loc>https://hektorwang.github.io/blog/2024/08/05/deploying-a-cicd-infrastructure-with-docker-compose.html</loc>
          <lastmod>2024-08-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://hektorwang@github.io/blog/2024/08/05/deploying-a-cicd-infrastructure-with-docker-compose.html</loc>
-         <lastmod>2024-08-05</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://hektorwang@github.io/blog/archive/2024.html</loc>
+         <loc>https://hektorwang.github.io/blog/archive/2024.html</loc>
          <lastmod>2024-08-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
