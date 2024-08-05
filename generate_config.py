@@ -14,7 +14,12 @@ class NavBar:
         if not self.docs_dir.is_dir():
             raise ValueError(f"{self.docs_dir.as_posix()} is not a directory")
 
-        self.nav_dict = {"nav": [{"Home": "index.md"}, {"Blog": "blog/index.md"}]}
+        self.nav_dict = {
+            "nav": [
+                # {"Home": "index.md"},
+                {"Blog": "blog/index.md"},
+            ]
+        }
 
     def build_nav_structure(self):
         file_structure = defaultdict(lambda: defaultdict(dict))
@@ -68,9 +73,11 @@ if __name__ == "__main__":
     BASE_DIR = Path(__file__).parent
     nav_bar = NavBar(BASE_DIR)
     nav_structure = nav_bar.build_nav_structure()
-
-    # Print the resulting YAML
-    nav_yaml = yaml.dump(nav_structure, sort_keys=False, default_flow_style=False)
+    nav_yaml = yaml.dump(
+        nav_structure,
+        sort_keys=False,
+        default_flow_style=False,
+    )
     print(nav_yaml)
     with open(BASE_DIR / "site.yml", mode="r", encoding="utf-8") as f:
         print(f.read())

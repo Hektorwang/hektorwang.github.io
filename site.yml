@@ -57,6 +57,7 @@ theme:
 plugins:
   - offline
   - blog
+  - search
 extra:
   generator: false
 # extra_css:
