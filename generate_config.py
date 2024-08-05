@@ -26,7 +26,7 @@ class NavBar:
                 and path.absolute().as_posix()
                 != (self.docs_dir / "index.md").as_posix()
                 and path.parent.absolute().as_posix()
-                != (self.docs_dir / "blog").as_posix()
+                # != (self.docs_dir / "blog").as_posix()
             ):
                 parts = path.relative_to(self.docs_dir).parts
                 current_level = file_structure

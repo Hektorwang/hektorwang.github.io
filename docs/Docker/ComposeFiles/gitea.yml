@@ -1,0 +1,38 @@
+services:
+  gitea:
+    image: gitea/gitea:1
+    container_name: gitea
+    restart: unless-stopped # on-failure
+    depends_on:
+      - postgres
+    shm_size: 256mb
+    environment:
+      - GITEA__database__DB_TYPE=postgres
+      - GITEA__database__HOST=postgres:5432
+      - GITEA__database__NAME=giteadb
+      - GITEA__database__USER=gitea
+      - GITEA__database__PASSWD=<giteaPassword>
+      - DISABLE_SSH=true
+      - HTTP_PORT=3000
+      - DOMAIN=https://<domain:port/gitea/>
+      - ROOT_URL=http://0.0.0.0:3000/gitea
+      - LFS_START_SERVER=true
+      - SECRET_KEY=<giteaPassword>
+      - DISABLE_REGISTRATION=true
+      - REQUIRE_SIGNIN_VIEW=true
+
+    networks:
+      - postgres_network
+      - gitea_network
+    volumes:
+      - ./gitea:/data
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+
+networks:
+  postgres_network:
+    external: true
+    driver: bridge
+  gitea_network:
+    external: true
+    driver: bridge

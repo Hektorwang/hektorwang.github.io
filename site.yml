@@ -1,5 +1,5 @@
 # site_name: !ENV [SITE_NAME, "My Learning Notes"]
-site_name: "My Learning Notes"
+site_name: 'My Learning Notes'
 site_url: https://hektorwang@github.io
 site_description: Niko's Learning Notes
 site_author: You-Know-Who
@@ -26,27 +26,27 @@ theme:
   # language: zh
   language: en
   palette:
-    - media: "(prefers-color-scheme: light)"
+    - media: '(prefers-color-scheme: light)'
       scheme: default
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
-    - media: "(prefers-color-scheme: dark)"
+    - media: '(prefers-color-scheme: dark)'
       scheme: slate
       toggle:
         icon: material/brightness-4
         name: Switch to system preference
   features:
     - navigation.footer
-  # highlightjs: true
-  # hljs_languages:
-  #   - yaml
-  #   - rust
-  #   - bash
-  #   - python
-  #   - javascript
-  #   - vue
-  #   - django
+  highlightjs: true
+  hljs_languages:
+    - yaml
+    - rust
+    - bash
+    - python
+    - javascript
+    - vue
+    - django
   # include_homepage_in_sidebar: false
   # static_templates:
   #   - sitemap.html

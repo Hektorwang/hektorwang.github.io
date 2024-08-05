@@ -38,7 +38,6 @@ Updating OpenSSH on a Linux host is a common task. According to [CVE-2024-6387](
 #### 1. Install Required System Packages
 
 ```sh
-sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/repositories
 apk update && apk upgrade && apk add autoconf build-base linux-headers linux-pam-dev zlib-dev openssl-dev zlib-static musl-dev openssl-libs-static
 ```
 
