@@ -14,7 +14,7 @@ class NavBar:
         if not self.docs_dir.is_dir():
             raise ValueError(f"{self.docs_dir.as_posix()} is not a directory")
 
-        self.nav_dict = {"nav": [{"Home": "index.md"}]}
+        self.nav_dict = {"nav": [{"Home": "index.md"}, {"Blog": "blog/index.md"}]}
 
     def build_nav_structure(self):
         file_structure = defaultdict(lambda: defaultdict(dict))
@@ -26,7 +26,7 @@ class NavBar:
                 and path.absolute().as_posix()
                 != (self.docs_dir / "index.md").as_posix()
                 and path.parent.absolute().as_posix()
-                # != (self.docs_dir / "blog").as_posix()
+                != (self.docs_dir / "blog").as_posix()
             ):
                 parts = path.relative_to(self.docs_dir).parts
                 current_level = file_structure

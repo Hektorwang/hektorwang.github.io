@@ -1,6 +1,6 @@
 # site_name: !ENV [SITE_NAME, "My Learning Notes"]
 site_name: 'My Learning Notes'
-site_url: https://hektorwang@github.io
+site_url: https://hektorwang.github.io
 site_description: Niko's Learning Notes
 site_author: You-Know-Who
 
