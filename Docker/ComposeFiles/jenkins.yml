@@ -1,0 +1,43 @@
+services:
+  jenkins-docker:
+    image: docker:dind
+    container_name: jenkins-docker
+    privileged: true
+    restart: always
+    networks:
+      - jenkins
+    environment:
+      - DOCKER_TLS_CERTDIR=/certs
+    volumes:
+      - jenkins-docker-certs:/certs/client
+      - jenkins-data:/var/jenkins_home
+    ports:
+      - 2376:2376
+  jenkins-blueocean:
+    image: jenkins/jenkins:lts-jdk21
+    container_name: jenkins-blueocean
+    restart: unless-stopped # on-failure
+    depends_on:
+      - jenkins-docker
+    networks:
+      - jenkins
+    environment:
+      - DOCKER_HOST=tcp://docker:2376
+      - DOCKER_CERT_PATH=/certs/client
+      - DOCKER_TLS_VERIFY=1
+      - JENKINS_PREFIX=/jenkins
+    volumes:
+      - jenkins-data:/var/jenkins_home
+      - jenkins-docker-certs:/certs/client:ro
+    entrypoint: |-
+      /usr/bin/tini -- /usr/local/bin/jenkins.sh --prefix=/jenkins
+networks:
+  jenkins:
+    external: true
+    driver: bridge
+
+volumes:
+  jenkins-data:
+    external: true
+  jenkins-docker-certs:
+    external: true
