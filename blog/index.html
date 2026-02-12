@@ -808,34 +808,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../Docker/ComposeFiles/vaultwarden.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    vaultwarden
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../Docker/ComposeFiles/cloudbeaver.yml" class="md-nav__link">
         
   
@@ -1078,6 +1050,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="2026/02/12/installing-vaultwarden-via-docker.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installing Vaultwarden via Docker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1125,6 +1125,202 @@
       <header class="md-typeset">
         <h1 id="blog">Blog<a class="headerlink" href="#blog" title="Permanent link">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2026-02-12 00:00:00+00:00">February 12, 2026</time></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              3 min read
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="installing-vaultwarden-via-docker"><a class="toclink" href="2026/02/12/installing-vaultwarden-via-docker.html">Installing Vaultwarden via Docker</a></h2>
+<h3 id="1-install-docker"><a class="toclink" href="2026/02/12/installing-vaultwarden-via-docker.html#1-install-docker">1. Install Docker</a></h3>
+<p>Install Docker on your system first.</p>
+<h3 id="2-pull-docker-images"><a class="toclink" href="2026/02/12/installing-vaultwarden-via-docker.html#2-pull-docker-images">2. Pull Docker Images</a></h3>
+<ul>
+<li>vaultwarden/server:1.33.2</li>
+<li>openresty/openresty:bookworm</li>
+</ul>
+<pre><code class="language-bash">mkdir -p /home/vaultwarden /home/openresty/{ssl,conf.d}
+</code></pre>
+<h3 id="3-vaultwarden-setup"><a class="toclink" href="2026/02/12/installing-vaultwarden-via-docker.html#3-vaultwarden-setup">3. Vaultwarden Setup</a></h3>
+<h4 id="create-a-dedicated-vaultwarden-network-to-avoid-direct-exposure"><a class="toclink" href="2026/02/12/installing-vaultwarden-via-docker.html#create-a-dedicated-vaultwarden-network-to-avoid-direct-exposure">Create a dedicated Vaultwarden network to avoid direct exposure</a></h4>
+<pre><code class="language-bash">docker network create --driver bridge vaultwarden_network
+</code></pre>
+<h4 id="create-the-vaultwarden-startup-file-at-homevaultwardencomposeyml"><a class="toclink" href="2026/02/12/installing-vaultwarden-via-docker.html#create-the-vaultwarden-startup-file-at-homevaultwardencomposeyml">Create the Vaultwarden startup file at /home/vaultwarden/compose.yml</a></h4>
+<pre><code class="language-yml">services:
+  vaultwarden:
+    image: vaultwarden/server:1.33.2
+    container_name: vaultwarden
+    restart: unless-stopped
+    environment:
+      TZ: Asia/Shanghai
+      ENABLE_WEBSOCKET: false
+      # SIGNUPS_ALLOWED: false # Disable new user registration
+      SIGNUPS_ALLOWED: true # Allow new user registration
+      # ADMIN_TOKEN: Argon2 PHC hashed password for /admin access
+      # Generate using: echo -n &quot;YourPassword&quot; | argon2 &quot;$(openssl rand -base64 32)&quot; -e -id -k 65540 -t 3 -p 4
+      # Or use: docker run --rm -it vaultwarden/server /vaultwarden hash
+      ADMIN_TOKEN: xxx
+    volumes:
+      - ./vw-data:/data
+    networks:
+      - vaultwarden_network
+networks:
+  vaultwarden_network:
+    external: true
+</code></pre>
+<h4 id="start-vaultwarden"><a class="toclink" href="2026/02/12/installing-vaultwarden-via-docker.html#start-vaultwarden">Start Vaultwarden</a></h4>
+<pre><code class="language-bash">cd /home/vaultwarden
+docker compose up -d
+</code></pre>
+<h3 id="4-generate-an-ssl-certificate"><a class="toclink" href="2026/02/12/installing-vaultwarden-via-docker.html#4-generate-an-ssl-certificate">4. Generate an SSL Certificate</a></h3>
+<pre><code class="language-bash">cd /home/openresty/ssl
+# Generate private key
+openssl ecparam -name prime256v1 -genkey -noout -out key.pem
+# Create certificate signing request
+openssl req -new -key key.pem -out server.csr \
+    -subj &quot;/CN=localhost&quot;
+# Generate self-signed certificate
+openssl x509 -req -in server.csr -signkey key.pem -out cert.pem -days 3650
+</code></pre>
+<h3 id="5-openresty-setup"><a class="toclink" href="2026/02/12/installing-vaultwarden-via-docker.html#5-openresty-setup">5. OpenResty Setup</a></h3>
+<h4 id="configure-homeopenrestynginxconf"><a class="toclink" href="2026/02/12/installing-vaultwarden-via-docker.html#configure-homeopenrestynginxconf">Configure /home/openresty/nginx.conf</a></h4>
+<pre><code class="language-conf">pcre_jit on;
+worker_processes auto;
+events {
+    worker_connections 1024;
+}
+http {
+    log_format main '$remote_addr - $remote_user [$time_iso8601] &quot;$request&quot; '
+    '$status $body_bytes_sent &quot;$http_referer&quot; '
+    '&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;'
+    '&quot;$request_time&quot; &quot;$upstream_response_time&quot;';
+    open_log_file_cache max=1024 inactive=1m valid=5m min_uses=2;
+    access_log /var/log/nginx/access.log main;
+    error_log /var/log/nginx/error.log debug;
+    underscores_in_headers off;
+    include mime.types;
+    default_type application/octet-stream;
+    client_body_temp_path /var/run/openresty/nginx-client-body;
+    proxy_temp_path /var/run/openresty/nginx-proxy;
+    fastcgi_temp_path /var/run/openresty/nginx-fastcgi;
+    uwsgi_temp_path /var/run/openresty/nginx-uwsgi;
+    scgi_temp_path /var/run/openresty/nginx-scgi;
+    sendfile on;
+    keepalive_timeout 65;
+    server_tokens off;
+    resolver 127.0.0.11 valid=30s;
+    types_hash_max_size 4096;
+    client_max_body_size 1024M;
+    client_body_timeout 1m;
+    proxy_connect_timeout 1m;
+    proxy_read_timeout 10m;
+    proxy_send_timeout 10m;
+    include /etc/nginx/conf.d/*.conf;
+}
+</code></pre>
+<h4 id="configure-homeopenrestyconfdvaultwardenconf"><a class="toclink" href="2026/02/12/installing-vaultwarden-via-docker.html#configure-homeopenrestyconfdvaultwardenconf">Configure /home/openresty/conf.d/vaultwarden.conf</a></h4>
+<pre><code class="language-conf">upstream vaultwarden-default {
+    zone vaultwarden-default 64k;
+    server vaultwarden:80;
+    keepalive 2;
+}
+map $http_upgrade $connection_upgrade {
+    default upgrade;
+    '' &quot;&quot;;
+}
+server {
+    listen 80;
+    return 301 https://$host$request_uri;
+}
+server {
+    listen 443 ssl;
+    http2 on;
+    server_name _;
+    ssl_certificate /etc/nginx/ssl/cert.pem;
+    ssl_certificate_key /etc/nginx/ssl/key.pem;
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_prefer_server_ciphers off;
+    ssl_session_cache shared:SSL:10m;
+    ssl_session_timeout 1h;
+    client_max_body_size 525M;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection $connection_upgrade;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_connect_timeout 777;
+    proxy_send_timeout 777;
+    proxy_read_timeout 777;
+    send_timeout 777;
+    location / {
+      proxy_pass http://vaultwarden-default;
+    }
+}
+</code></pre>
+<h4 id="configure-homeopenrestycomposeyml"><a class="toclink" href="2026/02/12/installing-vaultwarden-via-docker.html#configure-homeopenrestycomposeyml">Configure /home/openresty/compose.yml</a></h4>
+<pre><code class="language-yml">services:
+  openresty:
+    image: openresty/openresty:bookworm
+    container_name: openresty
+    restart: unless-stopped
+    environment:
+      - TZ=Asia/Shanghai
+    ports:
+      - &quot;80:80&quot;
+      - &quot;443:443&quot;
+    volumes:
+      - ./nginx.conf:/usr/local/openresty/nginx/conf/nginx.conf:ro
+      - ./conf.d:/etc/nginx/conf.d/:ro
+      - ./default.d/:/etc/nginx/default.d/:ro
+      - ./log:/var/log/nginx/:rw
+      - ./ssl:/etc/nginx/ssl/:ro
+      - ./socks:/var/run/socks
+    networks:
+      - vaultwarden_network
+networks:
+  vaultwarden_network:
+    external: true
+    driver: bridge
+</code></pre>
+<h4 id="start-openresty"><a class="toclink" href="2026/02/12/installing-vaultwarden-via-docker.html#start-openresty">Start OpenResty</a></h4>
+<pre><code class="language-bash">cd /home/openresty
+docker compose up -d
+</code></pre>
+<h3 id="6-access-vaultwarden"><a class="toclink" href="2026/02/12/installing-vaultwarden-via-docker.html#6-access-vaultwarden">6. Access Vaultwarden</a></h3>
+<ul>
+<li>User interface: <a href="https://ip/">https://ip/</a></li>
+<li>Admin panel: <a href="https://ip/admin">https://ip/admin</a>, password: <code>Password used to generated ADMIN_TOKEN</code></li>
+</ul>
+<h3 id="7-toggle-new-user-registration"><a class="toclink" href="2026/02/12/installing-vaultwarden-via-docker.html#7-toggle-new-user-registration">7. Toggle New User Registration</a></h3>
+<p>To enable/disable new user registration:
+1. Modify <code>/home/vaultwarden/compose.yml</code>: toggle the <code>SIGNUPS_ALLOWED</code> value
+2. Restart Vaultwarden: <code>docker compose restart</code></p>
+<p>Users can be managed through the admin interface.</p>
+<h3 id="8-browser-setup"><a class="toclink" href="2026/02/12/installing-vaultwarden-via-docker.html#8-browser-setup">8. Browser Setup</a></h3>
+<p>Install the Bitwarden browser extension to start using Vaultwarden.</p>
+    
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
