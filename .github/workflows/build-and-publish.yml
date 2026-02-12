@@ -36,5 +36,5 @@ jobs:
       - name: Generate MkDocs config and deploy
         run: |
           chmod +x build_and_publish.sh
-          # python3 generate_config.py | mkdocs gh-deploy -f -
-          bash build_and_publish.sh
+          python3 generate_config.py | mkdocs gh-deploy -f -
+          # bash build_and_publish.sh
