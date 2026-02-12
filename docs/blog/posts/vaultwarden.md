@@ -1,3 +1,9 @@
+---
+date:
+  created: 2026-02-12
+# draft: true
+---
+
 # Installing Vaultwarden via Docker
 
 ## 1. Install Docker
