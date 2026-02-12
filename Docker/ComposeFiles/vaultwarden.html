@@ -12,9 +12,13 @@
         <meta name="author" content="You-Know-Who">
       
       
-        <link rel="canonical" href="https://hektorwang.github.io/blog/archive/2024.html">
+        <link rel="canonical" href="https://hektorwang.github.io/Docker/ComposeFiles/vaultwarden.html">
       
       
+        <link rel="prev" href="../../Bash/blank.html">
+      
+      
+        <link rel="next" href="cloudbeaver.yml">
       
       
         
@@ -25,7 +29,7 @@
     
     
       
-        <title>2024 - My Learning Notes</title>
+        <title>vaultwarden - My Learning Notes</title>
       
     
     
@@ -78,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#2024" class="md-skip">
+        <a href="#installing-vaultwarden-via-docker" class="md-skip">
           Skip to content
         </a>
       
@@ -114,7 +118,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              2024
+              vaultwarden
             
           </span>
         </div>
@@ -262,7 +266,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../index.html" class="md-nav__link">
+      <a href="../../blog/index.html" class="md-nav__link">
         
   
   
@@ -697,18 +701,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
@@ -729,7 +735,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
@@ -744,18 +750,20 @@
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" checked>
         
           
           <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
@@ -776,7 +784,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -791,10 +799,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../Docker/ComposeFiles/vaultwarden.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    vaultwarden
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="vaultwarden.html" class="md-nav__link md-nav__link--active">
         
   
   
@@ -810,6 +845,203 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-install-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Install Docker
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-pull-docker-images" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Pull Docker Images
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-vaultwarden-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Vaultwarden Setup
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Vaultwarden Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-a-dedicated-vaultwarden-network-to-avoid-direct-exposure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create a dedicated Vaultwarden network to avoid direct exposure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-the-vaultwarden-startup-file-at-homevaultwardencomposeyml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create the Vaultwarden startup file at /home/vaultwarden/compose.yml
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#start-vaultwarden" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Start Vaultwarden
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-generate-an-ssl-certificate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Generate an SSL Certificate
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-openresty-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. OpenResty Setup
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. OpenResty Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configure-homeopenrestynginxconf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configure /home/openresty/nginx.conf
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-homeopenrestyconfdvaultwardenconf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configure /home/openresty/conf.d/vaultwarden.conf
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-homeopenrestycomposeyml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configure /home/openresty/compose.yml
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#start-openresty" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Start OpenResty
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-access-vaultwarden" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Access Vaultwarden
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-toggle-new-user-registration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Toggle New User Registration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-browser-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Browser Setup
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -822,7 +1054,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Docker/ComposeFiles/cloudbeaver.yml" class="md-nav__link">
+      <a href="cloudbeaver.yml" class="md-nav__link">
         
   
   
@@ -850,7 +1082,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Docker/ComposeFiles/openresty.yml" class="md-nav__link">
+      <a href="openresty.yml" class="md-nav__link">
         
   
   
@@ -878,7 +1110,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Docker/ComposeFiles/postgres.yml" class="md-nav__link">
+      <a href="postgres.yml" class="md-nav__link">
         
   
   
@@ -906,7 +1138,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Docker/ComposeFiles/gitea.yml" class="md-nav__link">
+      <a href="gitea.yml" class="md-nav__link">
         
   
   
@@ -1043,7 +1275,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../2024/08/05/deploying-a-cicd-infrastructure-with-docker-compose.html" class="md-nav__link">
+      <a href="../../blog/2024/08/05/deploying-a-cicd-infrastructure-with-docker-compose.html" class="md-nav__link">
         
   
   
@@ -1099,6 +1331,191 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-install-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Install Docker
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-pull-docker-images" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Pull Docker Images
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-vaultwarden-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Vaultwarden Setup
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Vaultwarden Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-a-dedicated-vaultwarden-network-to-avoid-direct-exposure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create a dedicated Vaultwarden network to avoid direct exposure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-the-vaultwarden-startup-file-at-homevaultwardencomposeyml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create the Vaultwarden startup file at /home/vaultwarden/compose.yml
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#start-vaultwarden" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Start Vaultwarden
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-generate-an-ssl-certificate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Generate an SSL Certificate
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-openresty-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. OpenResty Setup
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. OpenResty Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configure-homeopenrestynginxconf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configure /home/openresty/nginx.conf
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-homeopenrestyconfdvaultwardenconf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configure /home/openresty/conf.d/vaultwarden.conf
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-homeopenrestycomposeyml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configure /home/openresty/compose.yml
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#start-openresty" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Start OpenResty
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-access-vaultwarden" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Access Vaultwarden
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-toggle-new-user-registration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Toggle New User Registration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-browser-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Browser Setup
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1106,108 +1523,202 @@
             
           
           
-  <div class="md-content" data-md-component="content">
-    <div class="md-content__inner">
-      <header class="md-typeset">
-        <h1 id="2024">2024<a class="headerlink" href="#2024" title="Permanent link">&para;</a></h1>
-      </header>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-08-05 00:00:00+00:00">August 5, 2024</time></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              2 min read
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="deploying-a-cicd-infrastructure-with-docker-compose"><a class="toclink" href="../2024/08/05/deploying-a-cicd-infrastructure-with-docker-compose.html">Deploying a CI/CD Infrastructure with Docker Compose</a></h2>
-<p>In this article, I will demonstrate how to deploy a CI/CD infrastructure using Docker Compose. It will require the following components:</p>
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="installing-vaultwarden-via-docker">Installing Vaultwarden via Docker<a class="headerlink" href="#installing-vaultwarden-via-docker" title="Permanent link">&para;</a></h1>
+<h2 id="1-install-docker">1. Install Docker<a class="headerlink" href="#1-install-docker" title="Permanent link">&para;</a></h2>
+<p>Install Docker on your system first.</p>
+<h2 id="2-pull-docker-images">2. Pull Docker Images<a class="headerlink" href="#2-pull-docker-images" title="Permanent link">&para;</a></h2>
 <ul>
-<li>a database (postgres)</li>
-<li>a git server (gitea)</li>
-<li>a reverse proxy server (openresty)</li>
-<li>jekins(not finished)</li>
+<li>vaultwarden/server:1.33.2</li>
+<li>openresty/openresty:bookworm</li>
 </ul>
-<h3 id="1-create-two-docker-network-bridges"><a class="toclink" href="../2024/08/05/deploying-a-cicd-infrastructure-with-docker-compose.html#1-create-two-docker-network-bridges">1. Create Two Docker Network Bridges</a></h3>
-<pre><code class="language-bash"># For any app that needs to connect to PostgreSQL
-docker network create --driver bridge postgres_network
-# For the reverse proxy server to connect to the Gitea web service
-docker network create --driver bridge gitea_network
+<pre><code class="language-bash">mkdir -p /home/vaultwarden /home/openresty/{ssl,conf.d}
 </code></pre>
-<h3 id="2-start-postgres"><a class="toclink" href="../2024/08/05/deploying-a-cicd-infrastructure-with-docker-compose.html#2-start-postgres">2. Start Postgres</a></h3>
-<p>Use the Docker Compose <a href="../../Docker/ComposeFiles/postgres.yml">file</a> to start a PostgreSQL server, Besides the offical postgres image, Bitnami/PostgreSQL is also a good choice as it provides more flexable control over postgres.</p>
-<h3 id="3-config-gitea-database"><a class="toclink" href="../2024/08/05/deploying-a-cicd-infrastructure-with-docker-compose.html#3-config-gitea-database">3. Config Gitea Database</a></h3>
-<pre><code class="language-bash"># Replace 'giteaPassword' with a strong password
-docker compose exec -it postgres psql -U postgres -c &quot;CREATE ROLE gitea WITH LOGIN PASSWORD 'giteaPassword';&quot;
-docker compose exec -it postgres psql -U postgres -c &quot;CREATE DATABASE giteadb WITH OWNER gitea TEMPLATE template0 ENCODING UTF8 LC_COLLATE 'en_US.UTF-8' LC_CTYPE 'en_US.UTF-8';&quot;
+<h2 id="3-vaultwarden-setup">3. Vaultwarden Setup<a class="headerlink" href="#3-vaultwarden-setup" title="Permanent link">&para;</a></h2>
+<h3 id="create-a-dedicated-vaultwarden-network-to-avoid-direct-exposure">Create a dedicated Vaultwarden network to avoid direct exposure<a class="headerlink" href="#create-a-dedicated-vaultwarden-network-to-avoid-direct-exposure" title="Permanent link">&para;</a></h3>
+<pre><code class="language-bash">docker network create --driver bridge vaultwarden_network
 </code></pre>
-<h3 id="4-start-gitea"><a class="toclink" href="../2024/08/05/deploying-a-cicd-infrastructure-with-docker-compose.html#4-start-gitea">4. Start Gitea</a></h3>
-<p>Use the Docker Compose <a href="../../Docker/ComposeFiles/gitea.yml">file</a> to start up gitea server. Remember to replace <code>GITEA__database__PASSWD</code> and <code>SECRET_KEY</code> with strong values., the <code>HTTP_PORT</code> is irrelevant as we will only expose it on the internal <code>gitea_network</code>. To publish the Gitea service with a subpath like <code>/gitea</code>, configure <code>DOMAIN</code> and <code>ROOT_URL</code> accordingly.</p>
-<p><span id ="create_administrator_account">After Gitea starts, create an administrator account</span></p>
-<pre><code class="language-bash">docker compose exec -it gitea su git -c &quot;gitea admin user create --username &lt;ADMIN&gt; --password &lt;AdminPassword&gt; --email &lt;AdminEmailAddress&gt;&quot;
+<h3 id="create-the-vaultwarden-startup-file-at-homevaultwardencomposeyml">Create the Vaultwarden startup file at /home/vaultwarden/compose.yml<a class="headerlink" href="#create-the-vaultwarden-startup-file-at-homevaultwardencomposeyml" title="Permanent link">&para;</a></h3>
+<pre><code class="language-yml">services:
+  vaultwarden:
+    image: vaultwarden/server:1.33.2
+    container_name: vaultwarden
+    restart: unless-stopped
+    environment:
+      TZ: Asia/Shanghai
+      ENABLE_WEBSOCKET: false
+      # SIGNUPS_ALLOWED: false # Disable new user registration
+      SIGNUPS_ALLOWED: true # Allow new user registration
+      # ADMIN_TOKEN: Argon2 PHC hashed password for /admin access
+      # Generate using: echo -n &quot;YourPassword&quot; | argon2 &quot;$(openssl rand -base64 32)&quot; -e -id -k 65540 -t 3 -p 4
+      # Or use: docker run --rm -it vaultwarden/server /vaultwarden hash
+      ADMIN_TOKEN: xxx
+    volumes:
+      - ./vw-data:/data
+    networks:
+      - vaultwarden_network
+networks:
+  vaultwarden_network:
+    external: true
 </code></pre>
-<h3 id="5-reverse-proxy-server"><a class="toclink" href="../2024/08/05/deploying-a-cicd-infrastructure-with-docker-compose.html#5-reverse-proxy-server">5. Reverse Proxy Server</a></h3>
-<p>I'll use OpenResty as a reverse proxy server. It's like an Nginx server with many plugins, so I won't need to recompile Nginx for additional functionality.</p>
-<p>First, create an Nginx configuration file. Similar to the official Nginx Docker image, the OpenResty Docker image allows users to customize the configuration file by overwriting <code>/etc/nginx/conf.d/default.conf</code> within the container. The main configuration file <code>/usr/local/openresty/nginx/conf/nginx.conf</code> has an entry <code>include conf.d/*.conf</code>. Here's my configuration file:</p>
-<pre><code class="language-conf"># The default Docker DNS resolver, required for Nginx to resolve Gitea container IP
-resolver 127.0.0.11 valid=30s;
-access_log /var/log/nginx/access.log ;
-error_log /var/log/nginx/error.log ;
-server {
-   listen 443;
-   server_name _;
-   charset utf-8;
-   # gitea service will also need a 'v2' sub path
-   location ~ ^/(gitea|v2)($|/) {
-      client_max_body_size 512M;
-      rewrite ^ $request_uri;
-      rewrite ^(/gitea)?(/.*) $2 break;
-      proxy_pass http://gitea:3000$uri;
-      proxy_set_header Connection $http_connection;
-      proxy_set_header Upgrade $http_upgrade;
-      proxy_set_header Host $host;
-      proxy_set_header X-Real-IP $remote_addr;
-      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-      proxy_set_header X-Forwarded-Proto $scheme;
-   }
+<h3 id="start-vaultwarden">Start Vaultwarden<a class="headerlink" href="#start-vaultwarden" title="Permanent link">&para;</a></h3>
+<pre><code class="language-bash">cd /home/vaultwarden
+docker compose up -d
+</code></pre>
+<h2 id="4-generate-an-ssl-certificate">4. Generate an SSL Certificate<a class="headerlink" href="#4-generate-an-ssl-certificate" title="Permanent link">&para;</a></h2>
+<pre><code class="language-bash">cd /home/openresty/ssl
+# Generate private key
+openssl ecparam -name prime256v1 -genkey -noout -out key.pem
+# Create certificate signing request
+openssl req -new -key key.pem -out server.csr \
+    -subj &quot;/CN=localhost&quot;
+# Generate self-signed certificate
+openssl x509 -req -in server.csr -signkey key.pem -out cert.pem -days 3650
+</code></pre>
+<h2 id="5-openresty-setup">5. OpenResty Setup<a class="headerlink" href="#5-openresty-setup" title="Permanent link">&para;</a></h2>
+<h3 id="configure-homeopenrestynginxconf">Configure /home/openresty/nginx.conf<a class="headerlink" href="#configure-homeopenrestynginxconf" title="Permanent link">&para;</a></h3>
+<pre><code class="language-conf">pcre_jit on;
+worker_processes auto;
+events {
+    worker_connections 1024;
+}
+http {
+    log_format main '$remote_addr - $remote_user [$time_iso8601] &quot;$request&quot; '
+    '$status $body_bytes_sent &quot;$http_referer&quot; '
+    '&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;'
+    '&quot;$request_time&quot; &quot;$upstream_response_time&quot;';
+    open_log_file_cache max=1024 inactive=1m valid=5m min_uses=2;
+    access_log /var/log/nginx/access.log main;
+    error_log /var/log/nginx/error.log debug;
+    underscores_in_headers off;
+    include mime.types;
+    default_type application/octet-stream;
+    client_body_temp_path /var/run/openresty/nginx-client-body;
+    proxy_temp_path /var/run/openresty/nginx-proxy;
+    fastcgi_temp_path /var/run/openresty/nginx-fastcgi;
+    uwsgi_temp_path /var/run/openresty/nginx-uwsgi;
+    scgi_temp_path /var/run/openresty/nginx-scgi;
+    sendfile on;
+    keepalive_timeout 65;
+    server_tokens off;
+    resolver 127.0.0.11 valid=30s;
+    types_hash_max_size 4096;
+    client_max_body_size 1024M;
+    client_body_timeout 1m;
+    proxy_connect_timeout 1m;
+    proxy_read_timeout 10m;
+    proxy_send_timeout 10m;
+    include /etc/nginx/conf.d/*.conf;
 }
 </code></pre>
-<p>Then, start the OpenResty server using the Compose <a href="../../Docker/ComposeFiles/openresty.yml">file</a>. After that, we can access the gitea server using the <a href="../2024/08/05/deploying-a-cicd-infrastructure-with-docker-compose.html#create_administrator_account">accout</a> we created</p>
-<h3 id="6-jenkins"><a class="toclink" href="../2024/08/05/deploying-a-cicd-infrastructure-with-docker-compose.html#6-jenkins">6. Jenkins</a></h3>
-<p>...</p>
-    
-    
-  </div>
-</article>
-      
-      
-        
+<h3 id="configure-homeopenrestyconfdvaultwardenconf">Configure /home/openresty/conf.d/vaultwarden.conf<a class="headerlink" href="#configure-homeopenrestyconfdvaultwardenconf" title="Permanent link">&para;</a></h3>
+<pre><code class="language-conf">upstream vaultwarden-default {
+    zone vaultwarden-default 64k;
+    server vaultwarden:80;
+    keepalive 2;
+}
+map $http_upgrade $connection_upgrade {
+    default upgrade;
+    '' &quot;&quot;;
+}
+server {
+    listen 80;
+    return 301 https://$host$request_uri;
+}
+server {
+    listen 443 ssl;
+    http2 on;
+    server_name _;
+    ssl_certificate /etc/nginx/ssl/cert.pem;
+    ssl_certificate_key /etc/nginx/ssl/key.pem;
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_prefer_server_ciphers off;
+    ssl_session_cache shared:SSL:10m;
+    ssl_session_timeout 1h;
+    client_max_body_size 525M;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection $connection_upgrade;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_connect_timeout 777;
+    proxy_send_timeout 777;
+    proxy_read_timeout 777;
+    send_timeout 777;
+    location / {
+      proxy_pass http://vaultwarden-default;
+    }
+}
+</code></pre>
+<h3 id="configure-homeopenrestycomposeyml">Configure /home/openresty/compose.yml<a class="headerlink" href="#configure-homeopenrestycomposeyml" title="Permanent link">&para;</a></h3>
+<pre><code class="language-yml">services:
+  openresty:
+    image: openresty/openresty:bookworm
+    container_name: openresty
+    restart: unless-stopped
+    environment:
+      - TZ=Asia/Shanghai
+    ports:
+      - &quot;80:80&quot;
+      - &quot;443:443&quot;
+    volumes:
+      - ./nginx.conf:/usr/local/openresty/nginx/conf/nginx.conf:ro
+      - ./conf.d:/etc/nginx/conf.d/:ro
+      - ./default.d/:/etc/nginx/default.d/:ro
+      - ./log:/var/log/nginx/:rw
+      - ./ssl:/etc/nginx/ssl/:ro
+      - ./socks:/var/run/socks
+    networks:
+      - vaultwarden_network
+networks:
+  vaultwarden_network:
+    external: true
+    driver: bridge
+</code></pre>
+<h3 id="start-openresty">Start OpenResty<a class="headerlink" href="#start-openresty" title="Permanent link">&para;</a></h3>
+<pre><code class="language-bash">cd /home/openresty
+docker compose up -d
+</code></pre>
+<h2 id="6-access-vaultwarden">6. Access Vaultwarden<a class="headerlink" href="#6-access-vaultwarden" title="Permanent link">&para;</a></h2>
+<ul>
+<li>User interface: <a href="https://ip/">https://ip/</a></li>
+<li>Admin panel: <a href="https://ip/admin">https://ip/admin</a>, password: <code>Password used to generated ADMIN_TOKEN</code></li>
+</ul>
+<h2 id="7-toggle-new-user-registration">7. Toggle New User Registration<a class="headerlink" href="#7-toggle-new-user-registration" title="Permanent link">&para;</a></h2>
+<p>To enable/disable new user registration:
+1. Modify <code>/home/vaultwarden/compose.yml</code>: toggle the <code>SIGNUPS_ALLOWED</code> value
+2. Restart Vaultwarden: <code>docker compose restart</code></p>
+<p>Users can be managed through the admin interface.</p>
+<h2 id="8-browser-setup">8. Browser Setup<a class="headerlink" href="#8-browser-setup" title="Permanent link">&para;</a></h2>
+<p>Install the Bitwarden browser extension to start using Vaultwarden.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
           
-
-
-
-<nav class="md-pagination">
-  
-</nav>
-        
-      
-    </div>
-  </div>
-
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
@@ -1216,6 +1727,44 @@ server {
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../../Bash/blank.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: blank">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                blank
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="cloudbeaver.yml" class="md-footer__link md-footer__link--next" aria-label="Next: cloudbeaver">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                cloudbeaver
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">

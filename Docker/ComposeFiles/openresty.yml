@@ -1,28 +1,19 @@
 services:
-  web:
-    # image: nginx:latest
+  openresty:
     image: openresty/openresty:alpine-fat
-    container_name: web
+    container_name: openresty
     restart: unless-stopped # on-failure
+    shm_size: 256mb
     ports:
-      - 'web_port:web_port'
+      - '443:443'
     volumes:
-      - ./conf.d:/etc/nginx/conf.d/:ro
-      - ./default.d/:/etc/nginx/default.d/:ro
+      - ./nginx_server.conf:/etc/nginx/conf.d/default.conf
       - ./favicon.ico:/usr/local/openresty/nginx/html/favicon.ico:ro
-      - ./log:/var/log/nginx/:rw
-      - jenkins-data:/var/jenkins_home
+      - ./log:/var/log/nginx:rw
     networks:
       - gitea_network
-      - jenkins
 
 networks:
-  jenkins:
-    external: true
-    driver: bridge
   gitea_network:
     external: true
     driver: bridge
-volumes:
-  jenkins-data:
-    external: true
